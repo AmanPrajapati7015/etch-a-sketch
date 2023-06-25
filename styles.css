@@ -1,5 +1,5 @@
 :root {
-    --borderWidth: 2px;
+    --borderWidth: 1px;
   }
 
 .container{
@@ -8,6 +8,7 @@
     padding: var(--borderWidth);
     width: 800px;
     height: 800px;
+    margin: auto;
     background-color: black;
     flex-direction: column;
 }
@@ -25,5 +26,5 @@
 }
 
 .box.colored{
-    background-color: rgb(68, 0, 255);
+    background-color: rgb(48, 221, 244);
 }
