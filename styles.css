@@ -1,5 +1,5 @@
 :root {
-    --borderWidth: 1px;
+    --borderWidth: 0px;
   }
 
 .container{
@@ -8,6 +8,7 @@
     padding: var(--borderWidth);
     width: 800px;
     height: 800px;
+    border: black 2px solid;
     margin: auto;
     background-color: black;
     flex-direction: column;
@@ -23,8 +24,5 @@
 .box{
     flex: 1 0 0;
     background-color: white;
-}
-
-.box.colored{
-    background-color: rgb(48, 221, 244);
+    transition: background-color 1s;
 }
