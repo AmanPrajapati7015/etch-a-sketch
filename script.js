@@ -4,6 +4,18 @@ let box;
 let n;
 let selectedColor ="black";
 
+randomNo = function(){
+    return Math.floor(Math.random()*256);
+}
+
+function randomizeColor(){
+    let r = randomNo();
+    let g = randomNo();
+    let b = randomNo();
+    selectedColor = `rgb(${r}, ${g}, ${b})`
+}
+
+
 function makeGrid(n){
     container.innerHTML = "";
     for(let j = 1; j <=n; j++){
@@ -13,7 +25,12 @@ function makeGrid(n){
             box = document.createElement("div");
             box.classList.add("box");
             box.addEventListener("mouseover", (e)=>{
-                e.target.style = `background-color :${selectedColor};`
+                if (selectedColor === "rainbow"){
+                    randomizeColor();
+                    e.target.style = `background-color :${selectedColor};`
+                    selectedColor = "rainbow"
+                }
+                else e.target.style = `background-color :${selectedColor};`
             });
             boxLine.appendChild(box);
         }
@@ -33,6 +50,10 @@ erasor.addEventListener("click", () => {selectedColor = "white"});
 
 const black = document.querySelector(".black");
 black.addEventListener("click", () => {selectedColor = "black"});
+
+const rainbow = document.querySelector(".rainbow");
+rainbow.addEventListener("click", () => {selectedColor = "rainbow"});
+
 
 
 
