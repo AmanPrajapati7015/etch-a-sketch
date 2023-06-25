@@ -1,0 +1,29 @@
+:root {
+    --borderWidth: 2px;
+  }
+
+.container{
+    display: flex;
+    gap: var(--borderWidth);
+    padding: var(--borderWidth);
+    width: 800px;
+    height: 800px;
+    background-color: black;
+    flex-direction: column;
+}
+
+.box-line{
+    display: flex;
+    flex: 1 0 0;
+    background-color: black;
+    gap: var(--borderWidth);
+}
+
+.box{
+    flex: 1 0 0;
+    background-color: white;
+}
+
+.box.colored{
+    background-color: rgb(68, 0, 255);
+}
