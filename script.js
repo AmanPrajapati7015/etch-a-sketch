@@ -1,7 +1,7 @@
 const container = document.querySelector(".container");
 let boxLine;
 let box;
-let n;
+let n = 16;
 let selectedColor ="black";
 
 randomNo = function(){
@@ -38,12 +38,16 @@ function makeGrid(n){
     }
 }
 
-makeGrid(16);
+makeGrid(n);
+
 const changeGrid = document.querySelector(".change-grid");
 changeGrid.addEventListener("click", ()=>{
     n = +prompt("Give the size of grid you want.");
     makeGrid(n);
 });
+
+const clear = document.querySelector(".clear");
+clear.addEventListener("click", ()=>{makeGrid(n)});
 
 const erasor = document.querySelector(".erasor");
 erasor.addEventListener("click", () => {selectedColor = "white"});
