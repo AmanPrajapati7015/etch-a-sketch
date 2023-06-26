@@ -92,5 +92,16 @@ rainbow.addEventListener("click", () => {selectedColor = "rainbow"});
 const darken = document.querySelector(".darken");
 darken.addEventListener("click", () => {selectedColor = "darken"});
 
+const grid = document.querySelector(".grid");
+grid.addEventListener("click", () => {
+    let toggleBorder = document.querySelector(':root');
+    if (getComputedStyle(toggleBorder).getPropertyValue('--borderWidth') == "0px"){
+        toggleBorder.style.setProperty('--borderWidth', '1px'); 
+    }
+    else{
+        toggleBorder.style.setProperty('--borderWidth', '0px');
+    }
+});
+
 
 
