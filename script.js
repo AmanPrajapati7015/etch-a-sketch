@@ -1,4 +1,5 @@
 const container = document.querySelector(".container");
+const gridSizeDisplay = document.querySelector("#grid-size-display");
 let boxLine;
 let box;
 let n = 16;
@@ -75,6 +76,7 @@ const changeGrid = document.querySelector(".change-grid");
 changeGrid.addEventListener("click", ()=>{
     n = +prompt("Give the size of grid you want.");
     makeGrid(n);
+    gridSizeDisplay.textContent = `Grid size : ${n} X ${n}`;
 });
 
 const clear = document.querySelector(".clear");
@@ -92,8 +94,9 @@ rainbow.addEventListener("click", () => {selectedColor = "rainbow"});
 const darken = document.querySelector(".darken");
 darken.addEventListener("click", () => {selectedColor = "darken"});
 
-const grid = document.querySelector(".grid");
-grid.addEventListener("click", () => {
+const gridLine = document.querySelector(".grid-line");
+gridLine.addEventListener("click", (e) => {
+    // changes the borderWidth varible in css 
     let toggleBorder = document.querySelector(':root');
     if (getComputedStyle(toggleBorder).getPropertyValue('--borderWidth') == "0px"){
         toggleBorder.style.setProperty('--borderWidth', '1px'); 
@@ -101,7 +104,13 @@ grid.addEventListener("click", () => {
     else{
         toggleBorder.style.setProperty('--borderWidth', '0px');
     }
+    //toggle button while clicked
+    e.target.classList.toggle("clicked");
+
+
 });
 
 
 
+// toggle grid lines .clicked add
+// change grid => change text above it 
