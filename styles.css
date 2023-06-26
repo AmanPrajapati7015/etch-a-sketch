@@ -27,8 +27,8 @@ body{
     display: flex;
     gap: var(--borderWidth);
     padding: var(--borderWidth);
-    width: 600px;
-    height: 600px;
+    width: 550px;
+    height: 550px;
     border: var(--light-black) 20px solid;
     background-color: black;
     flex-direction: column;

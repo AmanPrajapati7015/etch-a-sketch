@@ -80,6 +80,9 @@ function toggleGridLine(e){
     e.target.classList.toggle("clicked");
 }
 
+
+
+
 makeGrid(n);
 
 const changeGrid = document.querySelector(".change-grid");
@@ -88,6 +91,8 @@ changeGrid.addEventListener("click", ()=>{
     makeGrid(n);
     gridSizeDisplay.textContent = `Grid size : ${n} X ${n}`;
 });
+
+
 
 
 
@@ -100,13 +105,36 @@ gridLine.addEventListener("click", toggleGridLine);
 
 
 const erasor = document.querySelector(".erasor");
-erasor.addEventListener("click", () => {selectedColor = "rgb(255, 255, 255)"});
+erasor.addEventListener("click", (e) => {
+    selectedColor = "rgb(255, 255, 255)";
+    removeClickedAll();
+    e.target.classList.add("clicked");
+});
 
 const black = document.querySelector(".black");
-black.addEventListener("click", () => {selectedColor = "rgb(0, 0, 0)"});
+black.addEventListener("click", (e) => {
+    selectedColor = "rgb(0, 0, 0)";
+    removeClickedAll();
+    e.target.classList.add("clicked");
+});
 
 const rainbow = document.querySelector(".rainbow");
-rainbow.addEventListener("click", () => {selectedColor = "rainbow"});
+rainbow.addEventListener("click", (e) => {
+    selectedColor = "rainbow";
+    removeClickedAll();
+    e.target.classList.add("clicked");
+});
 
 const darken = document.querySelector(".darken");
-darken.addEventListener("click", () => {selectedColor = "darken"});
+darken.addEventListener("click", (e) => {
+    selectedColor = "darken";
+    removeClickedAll();
+    e.target.classList.add("clicked");
+});
+
+let Buttons = [erasor, black, rainbow, darken];
+function removeClickedAll(){
+    for (const btn of Buttons){
+        btn.classList.remove("clicked")
+    }
+}
