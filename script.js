@@ -45,9 +45,6 @@ function onHover(e){
     }
 }
 
-
-
-
 function makeGrid(n){
     container.innerHTML = "";
     for(let j = 1; j <=n; j++){
@@ -70,6 +67,19 @@ function makeGrid(n){
     }
 }
 
+function toggleGridLine(e){
+    // changes the borderWidth varible in css 
+    let toggleBorder = document.querySelector(':root');
+    if (getComputedStyle(toggleBorder).getPropertyValue('--borderWidth') == "0px"){
+        toggleBorder.style.setProperty('--borderWidth', '1px'); 
+    }
+    else{
+        toggleBorder.style.setProperty('--borderWidth', '0px');
+    }
+    //toggle button while clicked
+    e.target.classList.toggle("clicked");
+}
+
 makeGrid(n);
 
 const changeGrid = document.querySelector(".change-grid");
@@ -79,8 +89,15 @@ changeGrid.addEventListener("click", ()=>{
     gridSizeDisplay.textContent = `Grid size : ${n} X ${n}`;
 });
 
+
+
 const clear = document.querySelector(".clear");
 clear.addEventListener("click", ()=>{makeGrid(n)});
+
+
+const gridLine = document.querySelector(".grid-line");
+gridLine.addEventListener("click", toggleGridLine);
+
 
 const erasor = document.querySelector(".erasor");
 erasor.addEventListener("click", () => {selectedColor = "rgb(255, 255, 255)"});
@@ -93,24 +110,3 @@ rainbow.addEventListener("click", () => {selectedColor = "rainbow"});
 
 const darken = document.querySelector(".darken");
 darken.addEventListener("click", () => {selectedColor = "darken"});
-
-const gridLine = document.querySelector(".grid-line");
-gridLine.addEventListener("click", (e) => {
-    // changes the borderWidth varible in css 
-    let toggleBorder = document.querySelector(':root');
-    if (getComputedStyle(toggleBorder).getPropertyValue('--borderWidth') == "0px"){
-        toggleBorder.style.setProperty('--borderWidth', '1px'); 
-    }
-    else{
-        toggleBorder.style.setProperty('--borderWidth', '0px');
-    }
-    //toggle button while clicked
-    e.target.classList.toggle("clicked");
-
-
-});
-
-
-
-// toggle grid lines .clicked add
-// change grid => change text above it 
