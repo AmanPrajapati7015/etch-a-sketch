@@ -1,22 +1,35 @@
+/* variables */
 :root {
     --borderWidth: 0px;
+    --blue : rgb(0, 174, 255);
+    --black: rgb(24, 24, 24);
+    --light-black: rgb(32, 32, 32);
   }
 
 
-  *{
+/* default settings */
+*{
     margin: 0;
     padding: 0;
     border-radius: 0;
-    color: rgb(0, 174, 255);
-    background-color: rgb(24, 24, 24);
-  }
+    color: var(--blue);
+}
+
+body{
+    background-color: var(--black);
+}
+
+
+
+
+/* Working  */
 .container{
     display: flex;
     gap: var(--borderWidth);
     padding: var(--borderWidth);
     width: 600px;
     height: 600px;
-    border: rgb(32, 32, 32) 20px solid;
+    border: var(--light-black) 20px solid;
     background-color: black;
     flex-direction: column;
 }
@@ -38,7 +51,15 @@
 
 
 
-
+/* chota mota */
+h1{
+    text-align: center;
+    margin: 20px 0 50px 0;
+}
+p{
+    text-align: center;
+    
+}
 
 
 
@@ -50,40 +71,37 @@
 
 }
 
-h1{
-    text-align: center;
-    margin: 20px 0 50px 0;
-}
+
 
 .btn-pannel{
     display: flex;
     flex-direction: column;
     gap : 40px;
     justify-content: space-around;
-    background-color: rgb(32, 32, 32);
+    background-color: var(--light-black);
     padding: 30px;
     border-radius: 12px;
 }
 
 
-.colors, .simple-click{
+.colors, .simple-click,.grid{
     display: flex;
     flex-direction: column;
     gap : 20px;
-    background-color: rgb(32, 32, 32);
+    background-color: var(--light-black);
     justify-content: center;
 }
 
 
 button{
     padding: 8px 40px;
-    border: rgb(0, 174, 255) 1px solid;
+    border: var(--blue) 1px solid;
     font-size: 14px;
-    background-color: rgb(32, 32, 32);
+    background-color: var(--light-black);
     border-radius: 3px;
 }
 
 button:hover, .clicked{
-    background-color: rgb(0, 174, 255);
-    color: rgb(32, 32, 32) ;
+    background-color: var(--blue);
+    color: var(--light-black) ;
 }
