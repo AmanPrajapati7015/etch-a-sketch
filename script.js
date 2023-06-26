@@ -8,26 +8,41 @@ randomNo = function(){
     return Math.floor(Math.random()*256);
 }
 
+//generate array of 3 random integers in range [1, 255]
 function randomizeColor(){
     let r = randomNo();
     let g = randomNo();
     let b = randomNo();
-    // selectedColor = `rgb(${r}, ${g}, ${b})`
     let rgbArray = [r, g, b];
     return rgbArray
 }
 
+function onHover(e){
+    if (selectedColor === "rainbow"){
+        let arr = randomizeColor();
+        //add r g b values in place of selectedColor
+        e.target.style = `background-color : rgb(${arr[0]}, ${arr[1]}, ${arr[2]});`;
+        e.target.setAttribute("data-r", arr[0]/10);
+        e.target.setAttribute("data-g", arr[1]/10);
+        e.target.setAttribute("data-b", arr[2]/10);
+    }
+    else if (selectedColor === "darken"){
+        //gets factor of each component (r g b)
+        let factor = [e.target.getAttribute('data-r'),e.target.getAttribute('data-g'),e.target.getAttribute('data-b')]
 
+        //gets value of current color
+        let valuesString = e.target.style.backgroundColor
+        let oldColors =  valuesString.slice(4, -1).split(", ")
+        console.log(oldColors)
 
-
-
-
-function makeDarker(){
-    // get attributes (rgb)
-    // subtract from current color
-    // set new color to element
+        //updates the current color
+        let newColors =`rgb(${(+oldColors[0])-(+factor[0])}, ${(+oldColors[1])-(+factor[1])}, ${(+oldColors[2])-(+factor[2])})`;
+        e.target.style.backgroundColor = newColors;
+    }
+    else {
+        e.target.style = `background-color : ${selectedColor}`;
+    }
 }
-
 
 
 
@@ -40,33 +55,14 @@ function makeGrid(n){
         for(let i = 1; i <=n; i++){
             box = document.createElement("div");
             box.classList.add("box");
-            box.style.backgroundColor = "rgb(255, 255, 255)"
-            box.setAttribute("data-r", 26);
-            box.setAttribute("data-g", 26);
-            box.setAttribute("data-b", 26);
 
-            box.addEventListener("mouseover", (e)=>{
-                if (selectedColor === "rainbow"){
-                    let arr = randomizeColor();
-                    e.target.style = `background-color : rgb(${arr[0]}, ${arr[1]}, ${arr[2]});`;//add r g b values in place of selectedColor
-                    e.target.setAttribute("data-r", arr[0]/10);
-                    e.target.setAttribute("data-g", arr[1]/10);
-                    e.target.setAttribute("data-b", arr[2]/10);
-                }
-                else if (selectedColor === "darken"){
-                    console.log("to subtract")
-                    console.log(e.target.getAttribute('data-r'))
-                    console.log(e.target.getAttribute('data-g'))
-                    console.log(e.target.getAttribute('data-b'))
-                    console.log("form what!")
-                    console.log(e.target.style.backgroundColor)
-                    //split every r g b from upper string and convert into numbers
-                    //set backgroundColor = r-(data-r), ....
-                }
-                else {
-                    e.target.style = `background-color : ${selectedColor}`;
-                }
-            });
+            //ensure every box have following attributes/style
+            box.style.backgroundColor = "rgb(255, 255, 255)"
+            box.setAttribute("data-r", 25.5);
+            box.setAttribute("data-g", 25.5);
+            box.setAttribute("data-b", 25.5);
+
+            box.addEventListener("mouseover", onHover);
             boxLine.appendChild(box);
         }
         container.appendChild(boxLine);
